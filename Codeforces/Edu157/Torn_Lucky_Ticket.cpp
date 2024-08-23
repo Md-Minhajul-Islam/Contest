@@ -65,10 +65,6 @@ void solve()
             if(ln2 < ln1) ans += 1ll*a[ln1-ln2][max(0, sum1-sum2)];
         }
     }
-    // if(n == 200000)
-    // {
-    //     cout << 1360263962 << "\n"; return;
-    // }
     cout << ans << '\n';
 }
 
