@@ -1,8 +1,8 @@
+// Q: 
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
 typedef vector<int> vii;
 typedef vector<ll> vll;
 typedef long double ld;
@@ -12,27 +12,21 @@ typedef long double ld;
 #define pb push_back
 #define mp make_pair
 
-#define yes cout << "YES\n";
-#define no cout << "NO\n";
-
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
-	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
-	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+    ll a, b, k; cin >> a >> b >> k;
+    ll ans = 0;
+    while(a != b)
+    {
+        if(b%k == 0 && b/k >= a) ans++, b /= k;
+        else if(b%k == 0)
+        {
+            ans += b-a;
+            break;
+        }
+        else ans += b%k, b -= b%k;
+    }
+    cout << ans <<"\n";
 }
 
 int main()

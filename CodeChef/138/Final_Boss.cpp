@@ -17,22 +17,25 @@ typedef long double ld;
 
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
-	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
+	int h, n; cin >> h >> n;
+	vector<int> a(n), c(n);
+	for(int& i: a) cin >> i;
+	for(int& i: c) cin >> i;
+	set<pair<long long, int>> S;
+	for(int i = 0; i < n; i++){
+		S.insert({1, i});
 	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	long long last_turn = 1;
+	while(h > 0){
+		auto [turn, i] = *S.begin();
+		S.erase(S.begin());
+		last_turn = turn;
+		h -= a[i];
+		S.insert({turn + c[i], i});
+	}
+	cout << last_turn << "\n";
+
+	// collected
 }
 
 int main()

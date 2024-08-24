@@ -15,24 +15,35 @@ typedef long double ld;
 #define yes cout << "YES\n";
 #define no cout << "NO\n";
 
+bool prime(ll n)
+{
+	for(ll i = 2; i*i <= n; i++)
+	{
+		if(n%i == 0) return 0;
+	}
+	return 1;
+}
+
+
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
+	ll x; cin >> x;
+	ll prime1 = -1, prime2 = -1;
+	if(x == 1)
 	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
+		cout << 6 << "\n";
+		return;
 	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	for(ll i = x; ;i++)
+	{
+		if(prime(i))
+		{
+			if(prime1 == -1) prime1 = i;
+			else if(prime2 == -1) prime2 = i;
+			else break;
+		}
+	}
+	cout << prime1*prime2 << "\n";
 }
 
 int main()

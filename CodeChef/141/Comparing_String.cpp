@@ -17,22 +17,32 @@ typedef long double ld;
 
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
+	string a, b; cin >> a >> b;
+	if(a.size() != b.size())
 	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
+		no return;
 	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	int j = -1, k = -1;
+	for(int i = 0; i < a.size(); i++)
+	{
+		if(a[i] != b[i])
+		{
+			if(j != -1 && k != -1) break;
+			if(j == -1) j = i; else k = i; 
+		}
+	}
+	if(j != -1 && k != -1)
+	{
+		swap(a[k], a[j]);
+	}
+	for(int i = 0; i < a.size(); i++)
+	{
+		if(a[i] != b[i])
+		{
+			no return;
+		}
+	}
+	yes
 }
 
 int main()
@@ -41,10 +51,10 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
-    int t; cin >> t;
-    while(t--)
-    {
+    // int t; cin >> t;
+    // while(t--)
+    // {
         solve();
-    }
+    // }
     return 0;
 }

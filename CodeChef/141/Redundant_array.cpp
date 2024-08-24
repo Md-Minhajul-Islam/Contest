@@ -17,22 +17,20 @@ typedef long double ld;
 
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
+	ll n; cin >> n;
+	ll cnt[n+1];
+	memset(cnt, 0, sizeof(cnt));
+	for(int i = 0; i < n;i++)
 	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
+		int x; cin >> x;
+		cnt[x]++;
 	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	ll mn = n;
+	for(int i = 1; i <= n; i++)
+	{
+		mn = min(mn, (n-cnt[i])*i);
+	}
+	cout << mn << "\n";
 }
 
 int main()

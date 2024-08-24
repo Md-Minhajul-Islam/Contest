@@ -15,24 +15,27 @@ typedef long double ld;
 #define yes cout << "YES\n";
 #define no cout << "NO\n";
 
+ll v[100006];
+
+void precal()
+{
+	ll j = 2, ans = 0;
+	for(ll i = 2; i <= 100000; i+=2)
+	{
+		if(j == i)
+		{
+			ans = 0;
+			j = i*2;
+		}
+		else if(ans == 0) ans = 4;
+		else ans += 4;
+		v[i] = ans;
+	}
+}
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
-	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
-	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	ll n; cin >> n;
+	cout << v[n] << "\n";
 }
 
 int main()
@@ -41,6 +44,7 @@ int main()
     cin.tie(NULL);
     cout.tie(NULL);
 
+    precal();
     int t; cin >> t;
     while(t--)
     {

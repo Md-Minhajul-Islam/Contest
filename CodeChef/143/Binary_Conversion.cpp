@@ -23,22 +23,22 @@ void solve()
 	int cnt = 0;
 	for(int i = 0; i < n; i++)
 	{
-		if(a[i] != b[i]) cnt++;
-		else if(a[i] == '1' && b[i] == '1') one++;
-		else if(a[i] == '0' && b[i] == '0') zero++; 
-		if(a[i] == '1') o++;
-		else z++;
+		if(a[i] != b[i])
+		{
+		    zero += (a[i]=='0');
+		    one += (a[i]=='1');
+		}
+		o += (a[i]=='1');
+		z += (a[i]=='0');
 	}
-	//cout << one << " " << zero << "\n";
-	one /= 2, zero /= 2;
-	if(cnt%2)
+	if(one != zero)
 	{
 		no return;
 	}
+	cnt = one+zero;
 	cnt /= 2;
 	if(cnt > k){ no return; }
 	k -= cnt;
-	//cout << k << " " << one << " " << zero << "\n";
 	if(k%2 == 0 || o >= 2 || z >= 2) yes
 	else no
 }

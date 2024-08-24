@@ -1,3 +1,5 @@
+
+
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
@@ -17,22 +19,17 @@ typedef long double ld;
 
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
+	ll n, k, h; cin >> n >> k >> h;
+	ll a = (h+k-1)/k;
+	ll ans = 0;
+	k--;
+	for(ll i = a; i <= n; i++)
 	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
+		if(i >= h) ans += n;
+		else
+		ans += (i*k-h+i)/k;
 	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	cout << ans << "\n";
 }
 
 int main()

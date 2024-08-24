@@ -1,50 +1,47 @@
+// Q: 
 #include<bits/stdc++.h>
 using namespace std;
 typedef long long int ll;
 typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
 typedef vector<int> vii;
 typedef vector<ll> vll;
 typedef long double ld;
-
+ 
 #define fi first
 #define se second
 #define pb push_back
 #define mp make_pair
-
-#define yes cout << "YES\n";
-#define no cout << "NO\n";
-
+ 
 void solve()
 {
-	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
-	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
-	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+    int x; cin >> x;
+    int a, b;
+    a = 0, b = x;
+    int mx = b-a;
+    for(int i = 0; i < 32; i++)
+    {
+        int temp = (1<<i);
+        int p, q;
+        p = temp; q = p^x;
+        if(abs(p-q) < mx)
+        {
+            a = p, b = q;
+            mx = abs(p-q);
+        }
+    }
+    cout <<min(a, b) << ' ' << max(a, b) <<'\n';
 }
-
+ 
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-
+ 
     int t; cin >> t;
     while(t--)
     {
-        solve();
+       solve();
     }
     return 0;
 }

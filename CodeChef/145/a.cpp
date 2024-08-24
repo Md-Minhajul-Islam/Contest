@@ -18,21 +18,17 @@ typedef long double ld;
 void solve()
 {
 	int n; cin >> n;
-	int m = n;
-	int a[n+1];
-	int k = 0;
-	while(n)
+	int a[n];
+	int m = -1, f = 1;
+	for(int i = 0; i < n; i++)
 	{
-		int x = n/2;
-		k++;
-		for(int i = n; i > x; i--)
-		{
-			a[i] = k;
-		}
-		n = x;
+		int x; cin >> x;
+		if(x == 0) continue;
+		else if(m == -1) m = x;
+		else if(m != x) f = 0;
 	}
-	cout << k <<"\n";
-	for(int i = 1; i <= m; i++) cout << a[i] << " \n"[i==m];
+	if(f) cout << "YES\n";
+	else cout << "NO\n";
 }
 
 int main()
