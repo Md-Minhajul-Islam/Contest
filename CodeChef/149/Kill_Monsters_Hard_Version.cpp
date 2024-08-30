@@ -48,21 +48,9 @@ void solve()
     sort(a.begin(), a.end());
     for(int i = 1; i <= n; i++)
     {
-        if(a[i] == prev1 && a[i] == prev2)
-        {
-            freq_1[i] = freq_1[i-1];
-            freq_2[i] = freq_2[i-1];
-        }
-    	else if(prev1 == a[i])
-        {
-            freq_1[i] = freq_1[i-1];
-            freq_2[i] = freq_2[i-1]+1;
-        }
-        else
-        {
-            freq_1[i] = freq_1[i-1]+1;
-            freq_2[i] = freq_2[i-1];
-        }
+        freq_1[i] = freq_1[i-1], freq_2[i] = freq_2[i-1];
+        if(a[i] != prev1) freq_1[i]++;
+        else if(a[i] != prev2) freq_2[i]++;
         prev2 = prev1, prev1 = a[i];
     }
     ll mx = 0;
@@ -77,20 +65,13 @@ void solve()
     int start = -1, prevx = -1;
     for(int i = n; i >= 1; i--)
     {
-
     	if(a[i] < x || prevx == a[i])
     	{
     		if(start == -1) start = i;
     		x = a[i];
     		int ind = lower_bound(a.begin(), a.end(), 1ll*x*k)-a.begin()-1;
-            // cout << i << " " << ind << "\n";
     		int multiple_kill = min(start, ind);
-            // cout << multiple_kill << "\n";
-            // cout << freq_2[multiple_kill]-freq_2[i-1] << "\n";
-            // ll tot = freq_1[max(ind, start)];
-            // if(a[multiple_kill] == a[i-1])
     		ll tot = 0ll+freq_2[multiple_kill]-freq_2[i-1] + freq_1[max(ind, start)];
-        // cout << tot << "\n";
     		mx = max(mx, tot);
             prevx = x;
     	}
