@@ -46,8 +46,10 @@ void solve()
 
     map<string, int> m;
     m["BG"] = 0, m["BR"] = 1, m["BY"] = 2, m["GR"] = 3, m["GY"] = 4, m["RY"] = 5;
+
     int a[12][n+2];
     for(int i = 0; i < 12; i++) a[i][0] = -1, a[i][n+1] = 1e9;
+
     for(int i = 1; i <= n; i++)
     {
     	for(int j = 0; j < 6; j++) a[j][i] = a[j][i-1];
@@ -58,8 +60,7 @@ void solve()
     	for(int j = 6; j <= 11; j++) a[j][i] = a[j][i+1];
     	a[m[s[i]]+6][i] = i;
     }
-    // for(int i = 0; i < 12; i++)
-    // 	for(int j = 0; j <= n+1; j++) cout << a[i][j] << " \n"[j==n+1];
+
     while(q--)
     {
     	int l, r; cin >> l >> r;
@@ -77,15 +78,15 @@ void solve()
     		mx = max(mx, a[i][r]);
     	}
     	if(mx != -1) ans = abs(l-mx)+abs(mx-r);
-    	//cout << ans << "\n";
+
     	int mn = 1e9;
     	for(int i = 6; i <= 11; i++)
     	{
     		if(i == m[s[l]]+6 || i == m[s[r]]+6) continue;
     		mn = min(mn, a[i][r]);
     	}	
-    	//cout << mn << "\n";
     	if(mn != 1e9) ans = min(ans, abs(l-mn)+abs(mn-r));
+    	
     	if(ans == 1e9) cout << -1 << "\n";
     	else cout << ans << "\n";
     }

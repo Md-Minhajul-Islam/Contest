@@ -75,7 +75,7 @@ void solve()
     {
         gcd = __gcd(diff[i], gcd);
     }
-    //if(gcd == 0) cout << n << ' ' << m << " " << k <<"\n";
+
     if((gcd == 0 && abs(tot1-tot2) == 0) || (gcd != 0 && abs(tot1-tot2)%gcd == 0)) yes;
     else no;
 

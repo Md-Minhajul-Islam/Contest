@@ -67,7 +67,6 @@ void solve()
     {
         sum += 1ll*v[i]*b[i];
     }
-    //if(sum == 724) cout << n << m << k;
 
     cout << sum << "\n";
 }

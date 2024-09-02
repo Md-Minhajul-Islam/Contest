@@ -41,18 +41,17 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 void solve()
 {
     int n; cin >> n;
-    vector<pii> v;
+    vector<pair<int, int>> v;
     for(int i = 2; i <= n; i++)
     {
-    	int parent = i, child = 1;
+    	int parent = 1, child = i;
     	while(1)
     	{
     		cout << "? " << parent << " " << child <<"\n";
-    		fflush(stdout);
+    		cout.flush();
     		int x; cin >> x;
-    		if(x == -1) return;
     		if(parent == x) break;
-    		child = x;
+    		parent = x;
     	}
     	v.pb({parent, child});
     }
@@ -62,8 +61,8 @@ void solve()
     	cout << p.fi << " " << p.se <<" ";
     }
     cout << "\n";
-    fflush(stdout);
-    
+    cout.flush();
+
 }
 
 int main()

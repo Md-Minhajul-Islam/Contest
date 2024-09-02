@@ -40,30 +40,30 @@ template <class T, class V> void _print(map <T, V> v) {cerr << "[ "; for (auto i
 
 void solve()
 {
-    ll l = 2, h = 999;
-    while(l < h)
+    string a, b; cin >> a >> b;
+    if(a[0] != b[0] || a[a.size()-1] != b[b.size()-1])
     {
-    	ll m1 = l+(h-l)/3;
-    	ll m2 = l+2*(h-l)/3;
-
-    	cout << "? " << m1 <<  " " << m2 << "\n";
-    	fflush(stdout);
-
-    	ll mul; cin >> mul;
-
-    	if(mul == m1*m2) l = m2+1;
-    	else if(mul == m1*(m2+1)) l = m1+1, h = m2;
-    	else h = m1;
+    	no; return;
     }
-    cout << "! " << l << "\n";
-    fflush(stdout);
+    if(a[0] == b[0] && a[0] == a[a.size()-1])
+    {
+    	yes; return;
+    }
+    for(int i = 1; i < a.size(); i++)
+    {
+    	if(a[i]==b[i] && a[i] == a[a.size()-1] && a[i-1]==b[i-1] && a[i-1] == a[0])
+    	{
+    		yes; return;
+    	}
+    }
+    no;
 }
 
 int main()
 {
-    // ios_base::sync_with_stdio(false);
-    // cin.tie(NULL);
-    // cout.tie(NULL);
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
     #ifndef ONLINE_JUDGE
     freopen("Error.txt", "w", stderr);
